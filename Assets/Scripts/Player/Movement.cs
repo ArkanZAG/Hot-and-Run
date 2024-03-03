@@ -18,8 +18,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float burnDuration;
     [SerializeField] private float currentBurnDuration;
     
-
-    [FormerlySerializedAs("burningParticles")] [SerializeField] private ParticleSystem[] burningDashParticles;
+    [SerializeField] private ParticleSystem[] burningDashParticles;
     [SerializeField] private ParticleSystem playerBurningParticles;
 
     [SerializeField] private Transform particleTransform;
