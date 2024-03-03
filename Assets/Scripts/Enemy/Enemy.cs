@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Health enemyHealth;
+    [SerializeField] private Burning burning;
 
     private void Start()
     {
@@ -17,9 +18,8 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Burn()
+    public void Burning()
     {
-        enemyHealth.RemoveHealth(Time.deltaTime);
-        Debug.Log("Enemy is Burning");
+        burning.Burned();
     }
 }

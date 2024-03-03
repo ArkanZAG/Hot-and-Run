@@ -362,6 +362,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342739881}
   m_CullTransparentMesh: 1
+--- !u!198 &420046439 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800002, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+  m_PrefabInstance: {fileID: 1366881580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &420046441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+  m_PrefabInstance: {fileID: 1366881580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &588879180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1049,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1366881580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1663389521}
+    m_Modifications:
+    - target: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_Name
+      value: CFX4 Fire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
 --- !u!1 &1418828583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1380,7 @@ GameObject:
   - component: {fileID: 1663389517}
   - component: {fileID: 1663389516}
   - component: {fileID: 1663389515}
+  - component: {fileID: 1663389522}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1337,6 +1421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1663389515}
+  burning: {fileID: 1663389522}
 --- !u!54 &1663389517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1447,9 +1532,28 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.5, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 420046441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1663389522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663389514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb0de7752a63f646a1685391a0f7528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1663389515}
+  isBurning: 0
+  currentBurnDuration: 0
+  burnDamagePerSecond: 5
+  burnDuration: 5
+  playerBurningParticles: {fileID: 420046439}
 --- !u!4 &1748171390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8767152486562788127, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
@@ -1800,6 +1904,7 @@ GameObject:
   - component: {fileID: 2043475331}
   - component: {fileID: 2043475334}
   - component: {fileID: 2043475333}
+  - component: {fileID: 2043475335}
   - component: {fileID: 2043475330}
   - component: {fileID: 2043475329}
   m_Layer: 0
@@ -1878,21 +1983,16 @@ MonoBehaviour:
   dashCooldown: 3
   currentDashCooldown: 0
   dashDuration: 0.1
-  burnDuration: 2
-  currentBurnDuration: 0
-  playerBurnDamagePerSecond: 5
   burningDashParticles:
   - {fileID: 1748171393}
   - {fileID: 1984721348}
   - {fileID: 1581205194}
-  playerBurningParticles: {fileID: 760829436}
   particleTransform: {fileID: 1207189364}
   playerRigidBody: {fileID: 2043475329}
   isDashing: 0
   isDashCooldown: 0
-  isBurning: 0
   lastMovement: {x: 0, y: 0, z: 0}
-  playerHealth: {fileID: 2043475334}
+  burning: {fileID: 2043475335}
 --- !u!4 &2043475332
 Transform:
   m_ObjectHideFlags: 0
@@ -1924,7 +2024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2043475334}
-  playerMovement: {fileID: 2043475331}
+  burning: {fileID: 2043475335}
 --- !u!114 &2043475334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,6 +2045,24 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2043475335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043475328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb0de7752a63f646a1685391a0f7528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 2043475334}
+  isBurning: 0
+  currentBurnDuration: 0
+  burnDamagePerSecond: 5
+  burnDuration: 5
+  playerBurningParticles: {fileID: 760829436}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

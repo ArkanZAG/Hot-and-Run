@@ -16,12 +16,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float dashCooldown;
     [SerializeField] private float currentDashCooldown;
     [SerializeField] private float dashDuration;
-    [SerializeField] private float burnDuration;
-    [SerializeField] private float currentBurnDuration;
-    [SerializeField] private float playerBurnDamagePerSecond;
     [Header("Player Particles Data : ")]
     [SerializeField] private ParticleSystem[] burningDashParticles;
-    [SerializeField] private ParticleSystem playerBurningParticles;
     [Header("Player Transform Data : ")]
     [SerializeField] private Transform particleTransform;
     [Header("Player Rigidbody Data : ")]
@@ -29,21 +25,17 @@ public class Movement : MonoBehaviour
     [Header("Player Boolean Data : ")]
     [SerializeField] private bool isDashing;
     [SerializeField] private bool isDashCooldown;
-    [SerializeField] private bool isBurning;
     [Header("Player Other Data : ")]
     [SerializeField] private Vector3 lastMovement;
-    [SerializeField] private Health playerHealth;
+    [SerializeField] private Burning burning;
     private Coroutine playerDashCoroutine;
-
-    public bool IsBurning => isBurning;
-
+    
     void Update()
     {
         PlayerMovement();
         PlayerDash();
         PlayerSprint();
         PlayerDashCooldown();
-        PlayerIsBurning();
     }
 
     public void PlayerMovement()
@@ -94,20 +86,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void PlayerIsBurning()
-    {
-        if (!isBurning) return;
-        
-        currentBurnDuration += Time.deltaTime;
-        playerHealth.RemoveHealth(Time.deltaTime * playerBurnDamagePerSecond);
-
-        if (currentBurnDuration > burnDuration)
-        {
-            isBurning = false;
-            playerBurningParticles.Stop();
-        }
-    }
-
     public void PlayerSprint()
     {
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -131,13 +109,11 @@ public class Movement : MonoBehaviour
         isDashing = true;
 
         playerRigidBody.velocity = lastMovement * playerDashSpeed;
-        playerBurningParticles.Play();
+        
         foreach (var particle in burningDashParticles)
         {
             particle.Play();
         }
-
-        currentBurnDuration = 0;
 
         yield return new WaitForSeconds(dashDuration);
 
@@ -146,7 +122,7 @@ public class Movement : MonoBehaviour
             particle.Stop();
         }
 
-        isBurning = true;
+        burning.Burned();
         isDashing = false;
     }
 }

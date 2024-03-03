@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
-    [SerializeField] private Movement playerMovement;
+    [SerializeField] private Burning burning;
 
     private void Start()
     {
@@ -24,11 +24,11 @@ public class PlayerDamage : MonoBehaviour
 
         if (enemy == null) return;
 
-        bool isBurning = playerMovement.IsBurning;
+        bool isBurning = burning.IsBurning;
 
         if (isBurning == true)
         {
-            enemy.Burn();
+            enemy.Burning();
             playerHealth.AddHealth(20);
         }
     }

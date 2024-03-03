@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/31/bd855ca5/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Burning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -88,7 +89,7 @@
       <workItem from="1709394095016" duration="3467000" />
       <workItem from="1709451863963" duration="571000" />
       <workItem from="1709463004314" duration="421000" />
-      <workItem from="1709465961219" duration="3639000" />
+      <workItem from="1709465961219" duration="8786000" />
     </task>
     <servers />
   </component>
