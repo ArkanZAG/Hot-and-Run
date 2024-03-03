@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,20 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Health enemyHealth;
-    public void Burn()
+
+    private void Start()
     {
-        enemyHealth.RemoveHealth(5);
-        Debug.Log("Enemy is Burning");
+        enemyHealth.onDeath.AddListener(OnDead);
     }
 
-    public void Death()
+    private void OnDead()
     {
-        
+        Destroy(gameObject);
+    }
+
+    public void Burn()
+    {
+        enemyHealth.RemoveHealth(Time.deltaTime);
+        Debug.Log("Enemy is Burning");
     }
 }

@@ -6,17 +6,32 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Movement playerMovement;
+
+    private void Start()
+    {
+        playerHealth.onDeath.AddListener(OnDead);
+    }
+
+    private void OnDead()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         var enemy = other.GetComponent<Enemy>();
 
         if (enemy == null) return;
 
-        enemy.Burn();
-        playerHealth.AddHealth(20);
-        
-        Debug.Log("Player is entering enemy collider");
+        bool isBurning = playerMovement.IsBurning;
+
+        if (isBurning == true)
+        {
+            enemy.Burn();
+            playerHealth.AddHealth(20);
+        }
     }
-    
-    
+
+
 }

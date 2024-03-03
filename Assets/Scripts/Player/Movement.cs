@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
+    [Header("Player Data : ")]
     [SerializeField] private float playerMovementSpeed;
     [SerializeField] private float playerRunningSpeed;
     [SerializeField] private float playerNormalSpeed;
@@ -17,21 +18,24 @@ public class Movement : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float burnDuration;
     [SerializeField] private float currentBurnDuration;
-    
+    [SerializeField] private float playerBurnDamagePerSecond;
+    [Header("Player Particles Data : ")]
     [SerializeField] private ParticleSystem[] burningDashParticles;
     [SerializeField] private ParticleSystem playerBurningParticles;
-
+    [Header("Player Transform Data : ")]
     [SerializeField] private Transform particleTransform;
-    
+    [Header("Player Rigidbody Data : ")]
     [SerializeField] private Rigidbody playerRigidBody;
-
+    [Header("Player Boolean Data : ")]
     [SerializeField] private bool isDashing;
     [SerializeField] private bool isDashCooldown;
     [SerializeField] private bool isBurning;
-
+    [Header("Player Other Data : ")]
     [SerializeField] private Vector3 lastMovement;
-
+    [SerializeField] private Health playerHealth;
     private Coroutine playerDashCoroutine;
+
+    public bool IsBurning => isBurning;
 
     void Update()
     {
@@ -95,6 +99,7 @@ public class Movement : MonoBehaviour
         if (!isBurning) return;
         
         currentBurnDuration += Time.deltaTime;
+        playerHealth.RemoveHealth(Time.deltaTime * playerBurnDamagePerSecond);
 
         if (currentBurnDuration > burnDuration)
         {

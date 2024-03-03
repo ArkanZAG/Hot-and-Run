@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PlayerHealthDisplay : MonoBehaviour
 {
-    [SerializeField] private int healtValue;
-    [SerializeField] private Image healthImage;
+    [SerializeField] private Slider healthSlider;
     [SerializeField] private Health playerHealth;
 
-
-    public void Display()
+    private void Awake()
     {
-        
+        playerHealth.onHealthChanged.AddListener(Display);
+    }
+
+    public void Display(float currentHealth, float maxHealth)
+    {
+        healthSlider.value = currentHealth / maxHealth;
     }
 }
