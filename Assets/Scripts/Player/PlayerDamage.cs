@@ -29,7 +29,6 @@ public class PlayerDamage : MonoBehaviour
         if (isBurning == true)
         {
             enemy.Burning();
-            playerHealth.AddHealth(20);
         }
     }
 

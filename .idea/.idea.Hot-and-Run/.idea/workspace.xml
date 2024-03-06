@@ -13,6 +13,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Score.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,6 +93,7 @@
       <workItem from="1709463004314" duration="421000" />
       <workItem from="1709465961219" duration="8786000" />
       <workItem from="1709638512852" duration="3163000" />
+      <workItem from="1709690947910" duration="9768000" />
     </task>
     <servers />
   </component>

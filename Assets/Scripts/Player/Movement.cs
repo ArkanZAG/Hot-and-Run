@@ -12,9 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float playerNormalSpeed;
     [SerializeField] private float playerDashSpeed;
     [SerializeField] private float sprintDuration;
-    [SerializeField] private float sprintStamina;
     [SerializeField] private float dashCooldown;
-    [SerializeField] private float currentDashCooldown;
     [SerializeField] private float dashDuration;
     [Header("Player Particles Data : ")]
     [SerializeField] private ParticleSystem[] burningDashParticles;
@@ -22,12 +20,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform particleTransform;
     [Header("Player Rigidbody Data : ")]
     [SerializeField] private Rigidbody playerRigidBody;
-    [Header("Player Boolean Data : ")]
-    [SerializeField] private bool isDashing;
-    [SerializeField] private bool isDashCooldown;
     [Header("Player Other Data : ")]
     [SerializeField] private Vector3 lastMovement;
     [SerializeField] private Burning burning;
+    
+    private float sprintStamina;
+    private float currentDashCooldown;
+    private bool isDashing;
+    private bool isDashCooldown;
     private Coroutine playerDashCoroutine;
     
     void Update()
