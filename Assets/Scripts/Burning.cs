@@ -40,6 +40,4 @@ public class Burning : MonoBehaviour
             playerBurningParticles.Stop();
         }
     }
-    
-    //burning punya function burn yang nge set isBurning jadi true ( dia yang menyalakan burn )
 }
