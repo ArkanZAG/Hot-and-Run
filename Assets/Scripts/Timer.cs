@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         if (currentTimer <= 0 )
         {
             timerText.text = 0.ToString();
-            Debug.Log("Game telah selesai!");
+            Application.Quit();
             isRunning = false;
         }
     }
