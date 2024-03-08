@@ -21,11 +21,12 @@ public class PlayerDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var enemy = other.GetComponent<Enemy>();
+        var enemyBurning = other.GetComponent<Burning>();
 
         if (enemy == null) return;
-
+        if (enemyBurning == null) return;
         bool isBurning = burning.IsBurning;
-
+        if (enemyBurning.IsBurning == true) return;
         if (isBurning == true)
         {
             enemy.Burning();

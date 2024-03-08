@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSprintDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Slider playerStamina;
+    [SerializeField] private Movement playerDash;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        playerStamina.value = 1 - playerDash.NormalizedSprintStamina;
     }
 }

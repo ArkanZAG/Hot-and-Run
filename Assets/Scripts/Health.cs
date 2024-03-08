@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
         curenthealthValue -= damaged;
         onHealthChanged.Invoke(curenthealthValue, maxHealthValue);
         if (curenthealthValue >= 0) return;
+        Debug.Log("DIE!");
         onDeath.Invoke();
     }
 }

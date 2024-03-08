@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -23,12 +24,15 @@ public class Movement : MonoBehaviour
     [Header("Player Other Data : ")]
     [SerializeField] private Vector3 lastMovement;
     [SerializeField] private Burning burning;
+    [SerializeField] private Transform pivotTransform;
     
     private float sprintStamina;
     private float currentDashCooldown;
     private bool isDashing;
     private bool isDashCooldown;
     private Coroutine playerDashCoroutine;
+
+    public float NormalizedSprintStamina => sprintStamina / sprintDuration;
     
     void Update()
     {
@@ -63,14 +67,18 @@ public class Movement : MonoBehaviour
         
         if (isDashCooldown) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
+            pivotTransform.DOScaleX(1f, 0.1f);
             if (playerDashCoroutine != null)
             {
                 StopCoroutine(playerDashCoroutine);
             }
             playerDashCoroutine = StartCoroutine(PlayerDashCoroutine());
             isDashCooldown = true;
+        }else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pivotTransform.DOScaleX(0.5f, 0.1f);
         }
     }
 
@@ -88,11 +96,6 @@ public class Movement : MonoBehaviour
 
     public void PlayerSprint()
     {
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            sprintStamina = 0;
-        }
-
         if (Input.GetKey(KeyCode.LeftShift) && sprintStamina <= sprintDuration)
         {
             playerMovementSpeed = playerRunningSpeed;
@@ -101,6 +104,10 @@ public class Movement : MonoBehaviour
         else
         {
             playerMovementSpeed = playerNormalSpeed;
+            if (sprintStamina > 0)
+            {
+                sprintStamina -= Time.deltaTime * 0.2f;
+            }
         }
     }
 

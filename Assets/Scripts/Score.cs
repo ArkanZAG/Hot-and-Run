@@ -12,7 +12,8 @@ public class Score : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     
     private int currentScore;
-    
+
+    public int CurrentScore => currentScore;
     public UnityEvent<int> onScoreChange;
 
     private void Awake()
@@ -35,5 +36,6 @@ public class Score : MonoBehaviour
     public void AddScore()
     {
         currentScore += scorePoint;
+        PlayerPrefs.SetInt("FinalScore", currentScore);
     }
 }
