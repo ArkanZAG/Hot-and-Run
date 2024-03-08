@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float sprintDuration;
     [SerializeField] private float dashCooldown;
     [SerializeField] private float dashDuration;
+    [SerializeField] private float staminaRegenSpeed;
     [Header("Player Particles Data : ")]
     [SerializeField] private ParticleSystem[] burningDashParticles;
     [Header("Player Transform Data : ")]
@@ -106,7 +107,7 @@ public class Movement : MonoBehaviour
             playerMovementSpeed = playerNormalSpeed;
             if (sprintStamina > 0)
             {
-                sprintStamina -= Time.deltaTime * 0.2f;
+                sprintStamina -= Time.deltaTime * staminaRegenSpeed;
             }
         }
     }

@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamage : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
     [SerializeField] private Burning burning;
+    private string victoryScene = "VictoryScene";
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class PlayerDamage : MonoBehaviour
     private void OnDead()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene(victoryScene);
     }
 
     private void OnTriggerEnter(Collider other)

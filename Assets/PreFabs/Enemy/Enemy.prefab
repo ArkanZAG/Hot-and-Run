@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8125668785534449736}
   - component: {fileID: 8291263768284218627}
   - component: {fileID: 1069037316258169516}
+  - component: {fileID: 5253629184626707326}
   - component: {fileID: 2249469920331692993}
   - component: {fileID: 5755941193926831287}
   m_Layer: 0
@@ -90,6 +91,18 @@ MonoBehaviour:
   burnDamagePerSecond: 5
   burnDuration: 5
   playerBurningParticles: {fileID: 2081491139069042489}
+--- !u!114 &5253629184626707326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790008091960795245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ffb66b08c30b445b53d6edc64f3ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2249469920331692993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -211,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 62914da97d33e4045999014315750373, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b203ba7790a7b74e94c2a66676f263b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
