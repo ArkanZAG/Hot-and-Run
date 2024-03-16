@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Burning : MonoBehaviour
+public class BurnPerSecond : MonoBehaviour, IBurnable
 {
     [SerializeField] private Health health;
     [SerializeField] private bool isBurning;
@@ -20,13 +21,13 @@ public class Burning : MonoBehaviour
         BurningUpdate();
     }
 
-    public void Burned()
+    public void StartBurn()
     {
         isBurning = true;
         playerBurningParticles.Play();
         currentBurnDuration = 0;
     }
-    
+
     public void BurningUpdate()
     {
         if (!isBurning) return;

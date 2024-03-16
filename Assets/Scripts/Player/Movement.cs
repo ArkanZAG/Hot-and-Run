@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,7 +25,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody playerRigidBody;
     [Header("Player Other Data : ")]
     [SerializeField] private Vector3 lastMovement;
-    [SerializeField] private Burning burning;
     [SerializeField] private Transform pivotTransform;
     
     private float sprintStamina;
@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
     private bool isDashing;
     private bool isDashCooldown;
     private Coroutine playerDashCoroutine;
+    private IBurnable burning;
 
     public float NormalizedSprintStamina => sprintStamina / sprintDuration;
     
@@ -130,7 +131,7 @@ public class Movement : MonoBehaviour
             particle.Stop();
         }
 
-        burning.Burned();
+        burning.StartBurn();
         isDashing = false;
     }
 }

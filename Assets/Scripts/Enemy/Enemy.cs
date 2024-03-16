@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using DG.Tweening;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private Health enemyHealth;
-    [SerializeField] private Burning burning;
+    private IBurnable burning;
     private Health playerHealth;
+    private IBurnable playerBurning;
     private bool isAlive = true;
 
     public bool IsAlive => isAlive;
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         enemyHealth.onDeath.AddListener(OnDead);
+        burning = gameObject.GetComponent<IBurnable>();
     }
 
     private void OnDead()
@@ -35,13 +38,17 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Burning()
-    {
-        burning.Burned();
-    }
-
-    public void Initialize(Health playerHealthComponent)
+    public void Initialize(Health playerHealthComponent, IBurnable playerBurn)
     {
         playerHealth = playerHealthComponent;
+        playerBurning = playerBurn;
+    }
+
+    public void OnDamage()
+    {
+        if (playerBurning.IsBurning)
+        {
+            burning.StartBurn();
+        }
     }
 }

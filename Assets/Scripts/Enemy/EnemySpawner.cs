@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -13,8 +14,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float yPosition;
     [SerializeField] private float minimumValue, maximumValue;
     [SerializeField] private int maximumEnemySpawned;
-    [SerializeField] private Health playerHealth;
-    
+    [SerializeField] private GameObject player;
+
     private int currentEnemySpawned;
 
     public UnityEvent<Enemy, Health> onEnemySpawned;
@@ -29,7 +30,11 @@ public class EnemySpawner : MonoBehaviour
         var enemyHealth = enemyCopy.GetComponent<Health>();
         var enemyComponent = enemyCopy.GetComponent<Enemy>();
         onEnemySpawned.Invoke(enemyComponent, enemyHealth);
-        enemyComponent.Initialize(playerHealth);
+
+        var playerHealth = player.GetComponent<Health>();
+        var playerBurn = player.GetComponent<IBurnable>();
+        
+        enemyComponent.Initialize(playerHealth, playerBurn);
         enemyHealth.onDeath.AddListener(OnDead);
         currentEnemySpawned += 1;
     }
